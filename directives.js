@@ -1,6 +1,6 @@
 'use strict';
 
-var myApp = angular.module('myApp.directives', []);
+var myApp = angular.module('myApp', []);
 
 /* Directives */
 
@@ -19,7 +19,7 @@ myApp.directive('githubRepo', ['$http', '$document', function($http, $document) 
 			$http.jsonp('https://api.github.com/repos/' + address + '?callback=JSON_CALLBACK').success(function(data, status) {
 				var repoInfo = data.data;
 				var formattedRepoName = repoInfo.full_name.replace('/', '_');
-				var container = new angular.element('<div/>');
+				var container = angular.element('<div/>');
 
 				var repoContent;
 				if (repoInfo.description && repoInfo.homepage) {
